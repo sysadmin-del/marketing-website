@@ -73,6 +73,7 @@ export function GuideFigure({
           className="mx-auto h-auto w-full max-w-[320px] rounded-xl border border-white/10 shadow-lg"
           sizes="(max-width: 640px) 90vw, 320px"
           priority={false}
+          unoptimized
         />
       </div>
       <figcaption className="border-t border-slate-200 px-4 py-3 text-sm leading-6 text-slate-600 sm:px-5">
