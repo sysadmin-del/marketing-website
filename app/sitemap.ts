@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { articles } from "@/lib/articles";
 import { guides } from "@/lib/guides";
-
+export const dynamic = "force-static";
 const siteUrl = "https://cashnix.emperva.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
