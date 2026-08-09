@@ -35,6 +35,7 @@ export default function BrandLogo({
         height={px}
         className="rounded-xl"
         priority={priority}
+        unoptimized
       />
       {showName && (
         <span className="text-xl font-bold tracking-tight text-slate-950">
