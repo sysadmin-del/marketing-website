@@ -1,69 +1,110 @@
-import Image from "next/image";
+import type { Metadata } from "next";
+import Link from "next/link";
+import Container from "@/components/Container";
+import ToolCard from "@/components/ToolCard";
+import { getPlayStoreUrl } from "@/lib/playStore";
 
-export default function Home() {
+export const metadata: Metadata = {
+  title: "Cashnix | Free Financial Tools",
+  description:
+    "Free calculators and planners to help you make smarter financial decisions. Start with the Emergency Fund Calculator and more tools from Cashnix.",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Cashnix | Free Financial Tools",
+    description:
+      "Free calculators and planners to help you make smarter financial decisions.",
+    url: "/",
+  },
+};
+
+const featuredTools = [
+  {
+    title: "Emergency Fund Calculator",
+    description: "Find out how much you need for a strong financial safety net.",
+    href: "/tools/emergency-fund-calculator",
+    icon: "🛡️",
+  },
+  {
+    title: "EMI Calculator",
+    description: "Estimate monthly loan payments and understand total interest.",
+    icon: "🏦",
+  },
+  {
+    title: "Budget Planner",
+    description: "Create a practical monthly plan for your income and expenses.",
+    icon: "📋",
+  },
+  {
+    title: "Savings Goal Calculator",
+    description: "Build a clear path toward your next important savings goal.",
+    icon: "🎯",
+  },
+];
+
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+    <>
+      <section className="relative overflow-hidden bg-white">
+        <div className="absolute inset-x-0 top-0 h-80 bg-[radial-gradient(circle_at_top,rgba(16,185,129,0.09),transparent_65%)]" />
+        <Container className="relative py-16 text-center sm:py-28 lg:py-32">
+          <div className="mx-auto max-w-3xl">
+            <span className="inline-flex rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-emerald-800">
+              Simple tools. Clear decisions.
+            </span>
+            <h1 className="mt-5 text-3xl font-bold tracking-[-0.04em] text-slate-950 min-[380px]:text-4xl sm:mt-6 sm:text-6xl">
+              Free Financial Tools
+            </h1>
+            <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-slate-600 sm:mt-6 sm:text-xl sm:leading-8">
+              Simple calculators and planners to help you make smarter financial
+              decisions.
+            </p>
+            <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+              <Link href="/tools" className="button-primary">
+                Explore Tools
+              </Link>
+              <a
+                href={getPlayStoreUrl("home_hero")}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="button-secondary"
+              >
+                Download Cashnix
+              </a>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      <section className="py-12 sm:py-20" aria-labelledby="featured-tools-title">
+        <Container>
+          <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+            <div>
+              <p className="text-sm font-semibold text-emerald-700">
+                Built for everyday money
+              </p>
+              <h2
+                id="featured-tools-title"
+                className="mt-2 text-3xl font-bold tracking-tight text-slate-950"
+              >
+                Explore our tools
+              </h2>
+            </div>
+            <Link
+              href="/tools"
+              className="text-sm font-semibold text-slate-700 hover:text-emerald-700"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+              View all tools <span aria-hidden="true">→</span>
+            </Link>
+          </div>
+          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {featuredTools.map((tool) => (
+              <ToolCard key={tool.title} {...tool} />
+            ))}
+          </div>
+        </Container>
+      </section>
+    </>
   );
 }
